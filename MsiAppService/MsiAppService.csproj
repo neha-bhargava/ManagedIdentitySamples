@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Identity.Client" Version="4.50.0-MsiPreview" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-	  <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+	<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
   </ItemGroup>
 
 </Project>

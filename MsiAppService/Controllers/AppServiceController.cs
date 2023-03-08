@@ -56,16 +56,20 @@ namespace MsiAppService.Controllers
 
         private IManagedIdentityApplication CreateManagedIdentityApplication(string? userAssignedId)
         {
-            ManagedIdentityApplicationBuilder msiBuilder = ManagedIdentityApplicationBuilder.Create()
-                .WithLogging(new MyIdentityLogger(_logger))
-                .WithCacheOptions(CacheOptions.EnableSharedCacheOptions);
-
-            if (!string.IsNullOrEmpty(userAssignedId))
+            if (userAssignedId == null) 
             {
-                msiBuilder.WithUserAssignedManagedIdentity(userAssignedId);
+                return ManagedIdentityApplicationBuilder.Create()
+                    .WithLogging(new MyIdentityLogger(_logger))
+                    .WithCacheOptions(CacheOptions.EnableSharedCacheOptions)
+                    .Build();
             }
-
-            return msiBuilder.Build();
+            else
+            {
+                return ManagedIdentityApplicationBuilder.Create(userAssignedId)
+                    .WithLogging(new MyIdentityLogger(_logger))
+                    .WithCacheOptions(CacheOptions.EnableSharedCacheOptions)
+                    .Build();
+            }
         }
     }
 
