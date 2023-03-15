@@ -32,6 +32,7 @@ internal class Program
                         Console.WriteLine("Acquiring token for system assigned managed identity");
 
                         IManagedIdentityApplication sami = ManagedIdentityApplicationBuilder.Create()
+                            .WithExperimentalFeatures()
                             .WithLogging(identityLogger, true)
                             .WithCacheOptions(CacheOptions.EnableSharedCacheOptions)
                             .Build();
@@ -48,6 +49,7 @@ internal class Program
                         string? userAssignedId = Console.ReadLine();
 
                         IManagedIdentityApplication uami = ManagedIdentityApplicationBuilder.Create(userAssignedId)
+                            .WithExperimentalFeatures()
                             .WithLogging(identityLogger, true)
                             .WithCacheOptions(CacheOptions.EnableSharedCacheOptions)
                             .Build();

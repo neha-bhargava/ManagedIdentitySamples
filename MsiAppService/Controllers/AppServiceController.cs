@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Abstractions;
 using Swashbuckle.AspNetCore.Annotations;
@@ -59,6 +58,7 @@ namespace MsiAppService.Controllers
             if (userAssignedId == null) 
             {
                 return ManagedIdentityApplicationBuilder.Create()
+                    .WithExperimentalFeatures()
                     .WithLogging(new MyIdentityLogger(_logger))
                     .WithCacheOptions(CacheOptions.EnableSharedCacheOptions)
                     .Build();
@@ -66,6 +66,7 @@ namespace MsiAppService.Controllers
             else
             {
                 return ManagedIdentityApplicationBuilder.Create(userAssignedId)
+                    .WithExperimentalFeatures()
                     .WithLogging(new MyIdentityLogger(_logger))
                     .WithCacheOptions(CacheOptions.EnableSharedCacheOptions)
                     .Build();

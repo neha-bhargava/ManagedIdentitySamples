@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Identity.Client" Version="4.50.0-MsiPreview" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.51.0" />
   </ItemGroup>
 
 </Project>
